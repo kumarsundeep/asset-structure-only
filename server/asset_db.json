@@ -1,0 +1,117 @@
+{
+  "devices": [
+    {
+      "id": 1,
+      "name": "www.infinitylabs.in",
+      "loopback": "200.168.0.1"
+    },
+    {
+      "id": "2",
+      "name": "www.mightycoders.in",
+      "loopback": "300.168.0.1"
+    },
+    {
+      "id": "3",
+      "name": "www.google.co.in",
+      "loopback": "400.168.0.1"
+    },
+    {
+      "loopback": "500.168.0.1",
+      "name": "www.microsoft.com",
+      "id": "rJ5-zzQy7"
+    }
+  ],
+  "interfaces": [
+    {
+      "id": 11,
+      "ipCode": "198.168.0.2",
+      "deviceId": 1,
+      "name": "INFI-LAB-RTR-001",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "id": 22,
+      "ipCode": "198.168.0.3",
+      "deviceId": 1,
+      "name": "INFI-LAB-RTR-002",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "id": 33,
+      "ipCode": "198.168.0.4",
+      "deviceId": 1,
+      "name": "INFI-LAB-RTR-003",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "id": 111,
+      "ipCode": "198.168.0.2",
+      "deviceId": 2,
+      "name": "MIGHTY-LAB-RTR-001",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "id": 222,
+      "ipCode": "198.168.0.3",
+      "deviceId": 2,
+      "name": "MIGHTY-LAB-RTR-002",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "id": 333,
+      "ipCode": "198.168.0.4",
+      "deviceId": 2,
+      "name": "MIGHTY-LAB-RTR-001",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "id": 1111,
+      "ipCode": "198.168.0.2",
+      "deviceId": 3,
+      "name": "GOOGLE-LAB-RTR-001",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "id": 2222,
+      "ipCode": "198.168.0.3",
+      "deviceId": 3,
+      "name": "GOOGLE-LAB-RTR-002",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "id": 3333,
+      "ipCode": "198.168.0.4",
+      "deviceId": 3,
+      "name": "GOOGLE-LAB-RTR-003",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum."
+    },
+    {
+      "ipCode": "198.168.0.2",
+      "deviceId": "rJ5-zzQy7",
+      "name": "MS-LAB-RTR-001",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum.",
+      "id": 3334
+    },
+    {
+      "ipCode": "192.168.23.3",
+      "deviceId": "rJ5-zzQy7",
+      "name": "MS-LAB-RTR-002",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum.",
+      "id": 3335
+    },
+    {
+      "ipCode": "192.168.0.4",
+      "deviceId": "rJ5-zzQy7",
+      "name": "MS-LAB-RTR-003",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum.",
+      "id": 3336
+    },
+    {
+      "ipCode": "192.168.0.4",
+      "deviceId": "rJ5-zzQy7",
+      "name": "MS-LAB-RTR-004",
+      "description": "Some Interface description will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim diam dui, vel consequat ligula sollicitudin nec. Donec lorem arcu, faucibus a semper hendrerit, convallis sodales ipsum.",
+      "id": 3337
+    }
+  ]
+}

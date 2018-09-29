@@ -1,0 +1,190 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Asset Inventory</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-md-3 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="device-title">DEVICE LIST <button class="btn btn-primary btn-xs add-device" (click)="addDeviceModal.open()">+</button></li>
+        <li [ngClass]="{'active' : selectedDevice === '' && overview === true}"><a (click)="showOverview()">Overview <span class="sr-only">(current)</span></a></li>
+        <!--device list-->
+        <li *ngFor="let device of devices" [ngClass]="{'active' : device.name === selectedDevice} || overview === false">
+          <a (click)="showInterfaces(device.id,device.name)">
+            <div class="row">
+              <div class="col-xs-6">
+                  <label>Hostname</label>
+                  <div>{{device.name}}</div>
+              </div>
+              <div class="col-xs-6">
+                  <label>Loopback</label>
+                  <div>{{device.loopback}}</div>
+              </div>
+
+            </div>
+
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--overview-->
+    <app-overview *ngIf="overview === true" class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main"></app-overview>
+    <!--interface list-->
+    <div *ngIf="deviceList === true" class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">        
+      <h1 class="page-header">Interfaces Found ({{noOfInterfaces}})</h1>
+      <div class="row">
+        <div class="col-xs-12" *ngFor="let interface of interfaces;">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object img-circle" width="100" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Interface">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{interface.name}}</h4>
+              <p>
+                {{interface.description}}
+              </p>
+              <p class="zip-city-info">
+                <span class="title">Ip Address:</span><span class="value">{{interface.ipCode}}</span>
+                <span class="title">Device:</span><span class="value">{{deviceName}}</span>
+              </p>
+            </div>
+            <div class="media-right">
+              <section class="interface-action">
+                <h5>ACTION</h5>
+                <button class="btn btn-info btn-sm" (click)="editInterfaceModal.open()"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button class="btn btn-danger btn-sm" (click)="deleteInterfaceModal.open()"><span class="glyphicon glyphicon-trash"></span></button>                
+              </section>
+            </div>
+          </div>
+          <modal #editInterfaceModal modalClass="add-modal">
+              <modal-header>
+                <h3>Edit Interface</h3>
+              </modal-header>
+              <modal-content>
+                <form [formGroup]="editForm" >
+                  <div class="form-group">
+                    <label for="einterfaceName" class="control-label">Interface Name:*</label>
+                    <input type="text" class="form-control" id="einterfaceName" formControlName="einterfaceName" value="{{interface.name}}" >
+                    <div class="to-validate" *ngIf="!editForm.controls['einterfaceName'].valid && editForm.controls['einterfaceName'].touched">{{ validMsg }}</div>
+                  </div>        
+                  <div class="form-group">
+                      <label for="einterfaceIp" class="control-label">Interface Ip Address:*</label>
+                      <input type="text" maxlength="15" class="form-control" id="einterfaceIp" formControlName="einterfaceIp" value="{{interface.ipCode}}" >
+                      <div class="to-validate" *ngIf="!editForm.controls['einterfaceIp'].valid && editForm.controls['einterfaceIp'].touched">{{ validIpMsg }}</div>
+                  </div>    
+                  
+                  <div class="form-group">
+                    <label for="einterfaceDesc" class="control-label">Interface Description:*</label>
+                    <input type="text" class="form-control" id="einterfaceDesc" formControlName="einterfaceDesc" value="{{interface.description}}" >
+                    <div class="to-validate" *ngIf="!editForm.controls['einterfaceDesc'].valid && editForm.controls['einterfaceDesc'].touched">{{ validMsg }}</div>
+                  </div>
+                </form>
+              </modal-content>
+              <modal-footer>
+                <button class="btn btn-default" (click)="editInterfaceModal.close()">Close</button>
+                <button class="btn btn-primary" (click)="editInterface(editForm.value,interface.id); editInterfaceModal.close()" [disabled]="!editForm.valid">Save</button>
+              </modal-footer>
+          </modal>
+          <modal #deleteInterfaceModal modalClass="add-modal">
+              <modal-header>
+                <h3>Delete Interface</h3>
+              </modal-header>
+              <modal-content>
+                  <h5 class="highlight text-danger">
+                      Are you sure you want to delete this?
+                    </h5>
+                <div class="row">
+                  <div class="col-xs-6">
+                      <label class="control-label">Interface Name</label>
+                      <div>{{interface.name}}</div>
+                  </div>
+                  <div class="col-xs-6">
+                      <label class="control-label">Ip Address</label>
+                      <div>{{interface.ipCode}}</div>
+                  </div>
+                  <div class="col-xs-12 del-desc-space">
+                    {{interface.description}}
+                  </div>
+                </div>                
+              </modal-content>
+              <modal-footer>
+                <button class="btn btn-default" (click)="deleteInterfaceModal.close()">No</button>
+                <button class="btn btn-danger" (click)="removeInterface(interface.id); deleteInterfaceModal.close()">Yes</button>
+              </modal-footer>
+          </modal>
+          <hr />
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary floating" (click)="addInterfaceModal.open()">+</button>
+      <!-- modals -->
+      <modal #addInterfaceModal modalClass="add-modal">
+        <modal-header>
+          <h3>Add Interfaces</h3>
+        </modal-header>
+        <modal-content>
+          <form [formGroup]="rForm">
+            <div class="form-group">
+              <label for="interfaceName" class="control-label">Interface Name:*</label>
+              <input type="text" class="form-control" id="interfaceName" formControlName="interfaceName" >
+              <div class="to-validate" *ngIf="!rForm.controls['interfaceName'].valid && rForm.controls['interfaceName'].touched">{{ validMsg }}</div>
+            </div>        
+            <div class="form-group">
+                <label for="interfaceIp" class="control-label">Interface Ip Address:*</label>
+                <input type="text" maxlength="15" class="form-control" id="interfaceIp" formControlName="interfaceIp" >
+                <div class="to-validate" *ngIf="!rForm.controls['interfaceIp'].valid && rForm.controls['interfaceIp'].touched">{{ validIpMsg }}</div>
+            </div>    
+            
+            <div class="form-group">
+              <label for="interfaceDesc" class="control-label">Interface Description:*</label>
+              <input type="text" class="form-control" id="interfaceDesc" formControlName="interfaceDesc" >
+              <div class="to-validate" *ngIf="!rForm.controls['interfaceDesc'].valid && rForm.controls['interfaceDesc'].touched">{{ validMsg }}</div>
+            </div>
+          </form>
+        </modal-content>
+        <modal-footer>
+          <button class="btn btn-default" (click)="addInterfaceModal.close()">Close</button>
+          <button class="btn btn-primary" (click)="addInterface(rForm.value); addInterfaceModal.close()" [disabled]="!rForm.valid">Submit</button>
+        </modal-footer>
+      </modal>
+    </div>
+    <modal #addDeviceModal modalClass="add-modal">
+      <modal-header>
+        <h3>Add Devices/Hosts</h3>
+      </modal-header>
+      <modal-content>
+        <form [formGroup]="deviceForm">
+          <div class="form-group">
+            <label for="deviceName" class="control-label">Hostname:*</label>
+            <input type="text" class="form-control" id="deviceName" formControlName="deviceName" >
+            <div class="to-validate" *ngIf="!deviceForm.controls['deviceName'].valid && deviceForm.controls['deviceName'].touched">{{ validMsg }}</div>
+          </div>
+          <div class="form-group">
+            <label for="deviceIp" class="control-label">Loopback:*</label>
+            <input type="text" maxlength="15" class="form-control" id="deviceIp" formControlName="deviceIp" >
+            <div class="to-validate" *ngIf="!deviceForm.controls['deviceIp'].valid && deviceForm.controls['deviceIp'].touched">{{ validIpMsg }}</div>
+        </div>
+        </form>
+      </modal-content>
+      <modal-footer>
+        <button class="btn btn-default" (click)="addDeviceModal.close()">Close</button>
+        <button class="btn btn-primary" (click)="addDevice(deviceForm.value); addDeviceModal.close()" [disabled]="!deviceForm.valid">Submit</button>
+      </modal-footer>
+    </modal>
+
+  </div>
+</div>
+
+
+

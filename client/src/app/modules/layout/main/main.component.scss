@@ -1,0 +1,65 @@
+.add-device{
+    float: right;
+      margin-right: 20px;
+      font-size: 20px;
+      border-radius: 50%;
+      line-height: 20px;
+      background: #666;
+      border-color: #666;
+  }
+  .interface-action{
+    width: 150px;
+    margin-top: 20px;
+    margin-left: 25px;
+    padding-left: 15px;
+    border-left: 1px dotted #bbb;
+    text-align: center;
+      h5{
+        color: #666;
+        margin-bottom: 10px;
+      }
+  }
+  .del-desc-space{
+    margin-top: 10px;
+  }
+  .floating{
+    &.btn{
+      border-radius: 50%;
+      position: fixed;
+      right: 15px;
+      bottom: 15px;
+      font-size: 35px;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      line-height: 50px;
+    }
+  }
+  p.zip-city-info{
+    color: #666;
+    .title{
+      color: #555;
+    }
+    .value{
+      padding: 0 5px;
+    }
+  }
+  app-overview{
+    display: block;
+  }
+  .to-validate{
+    color: red;
+    animation: 2s animateMsg forwards;
+  }
+  @keyframes animateMsg {
+    from {
+      opacity:0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity:1;
+      transform: translateY(0);
+    }
+  }
+  
+  
